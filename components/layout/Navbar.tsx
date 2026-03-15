@@ -33,6 +33,13 @@ export default function Navbar() {
     }
   }, [dark]);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileOpen]);
+
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     setActiveSection(href);
@@ -45,14 +52,14 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-      className={`fixed top-4 left-0 right-0 z-50 mx-auto transition-all duration-500 ${
+      className={`fixed top-5 md:top-8 left-0 right-0 z-50 mx-auto transition-all duration-500 ${
         scrolled
-          ? 'max-w-5xl glass rounded-2xl shadow-glass px-6 py-3'
-          : 'max-w-6xl bg-transparent px-6 py-4'
+          ? 'max-w-5xl glass border border-transparent dark:border-transparent rounded-2xl shadow-glass px-4 sm:px-6 py-3'
+          : 'max-w-6xl bg-transparent px-4 sm:px-6 py-4'
       }`}
     >
       {/* 3-column grid: LEFT=links  CENTER=logo  RIGHT=icons */}
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+      <div className="grid grid-cols-[76px_1fr_76px] md:grid-cols-[1fr_auto_1fr] items-center gap-2 md:gap-4">
 
         {/* ── LEFT: Nav Links ── */}
         <ul className="hidden md:flex items-center gap-1">
@@ -78,18 +85,18 @@ export default function Navbar() {
           ))}
         </ul>
         {/* Mobile spacer (left) */}
-        <span className="md:hidden" />
+        <span className="md:hidden w-[76px]" />
 
         {/* ── CENTER: Logo ── */}
         <Link
           href="#hero"
           onClick={() => handleNavClick('#hero')}
-          className="flex items-center gap-2 group"
+          className="flex items-center gap-2 group justify-self-center"
         >
           <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-grotesk font-bold text-sm shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
             N
           </div>
-          <span className="font-grotesk font-semibold text-textMain text-base tracking-tight">
+          <span className="hidden sm:inline font-grotesk font-semibold text-textMain text-base tracking-tight">
             Nisarg<span className="text-primary">.</span>
           </span>
         </Link>
@@ -100,7 +107,7 @@ export default function Navbar() {
           {/* Social Links – desktop only */}
           <div className="hidden md:flex items-center gap-1">
             <a
-              href="https://github.com/"
+              href="https://github.com/NisargS28"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -109,7 +116,7 @@ export default function Navbar() {
               <Github size={18} />
             </a>
             <a
-              href="https://linkedin.com/"
+              href="https://linkedin.com/nisarg-solanki-0970aa290"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -118,7 +125,7 @@ export default function Navbar() {
               <Linkedin size={18} />
             </a>
             <a
-              href="https://twitter.com/"
+              href="https://x.com/NisargS28"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
@@ -131,9 +138,12 @@ export default function Navbar() {
 
           {/* Theme Toggle – always visible */}
           <button
-            onClick={() => setDark((d) => !d)}
+            onClick={(e) => {
+              setDark((d) => !d);
+              (e.currentTarget as HTMLButtonElement).blur();
+            }}
             aria-label="Toggle theme"
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all duration-200"
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-muted md:hover:text-primary md:hover:bg-primary/10 active:scale-95 transition-all duration-200"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -153,7 +163,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
-            className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
+            className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-muted md:hover:bg-gray-100 md:dark:hover:bg-white/5 active:scale-95 transition-colors"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -164,40 +174,62 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden fixed inset-0 z-[60]"
           >
-            <div className="pt-4 pb-3 flex flex-col gap-1 border-t border-gray-100/60 dark:border-white/10 mt-3">
-              {navLinks.map((link, i) => (
-                <motion.button
-                  key={link.href}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  onClick={() => handleNavClick(link.href)}
-                  className="w-full text-left px-4 py-3 text-sm font-inter font-medium text-muted hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
-                >
-                  {link.label}
-                </motion.button>
-              ))}
-              <div className="flex items-center gap-2 px-4 pt-3 mt-1 border-t border-gray-100/60 dark:border-white/10">
-                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                  className="w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
+            <div
+              className="absolute inset-0 bg-black/55"
+              onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
+            />
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
+              className="absolute right-0 top-0 h-[100dvh] w-full bg-background dark:bg-[#0B1120] shadow-2xl px-6 pt-24 pb-8 flex flex-col"
+            >
+              <button
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="absolute top-5 right-5 w-10 h-10 rounded-xl flex items-center justify-center text-muted bg-gray-100/70 dark:bg-white/10"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="flex-1 flex flex-col justify-center gap-2">
+                {navLinks.map((link, i) => (
+                  <motion.button
+                    key={link.href}
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 }}
+                    onClick={() => handleNavClick(link.href)}
+                    className="w-full text-center px-4 py-3 text-lg font-inter font-semibold text-textMain hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                  >
+                    {link.label}
+                  </motion.button>
+                ))}
+              </div>
+
+              <div className="mt-auto pt-6 border-t border-gray-200 dark:border-white/10 flex items-center justify-center gap-3">
+                <a href="https://github.com/NisargS28" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
                   <Github size={18} />
                 </a>
-                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                  className="w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
+                <a href="https://linkedin.com/nisarg-solanki-0970aa290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
                   <Linkedin size={18} />
                 </a>
-                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                  className="w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
+                <a href="https://x.com/NisargS28" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
                   <Twitter size={18} />
                 </a>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

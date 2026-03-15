@@ -5,10 +5,10 @@ import { Mail, Github, Linkedin, Twitter, Send } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
 
 const socialLinks = [
-  { name: 'GitHub', icon: <Github size={24} />, href: '#', color: 'hover:text-[#333]' },
-  { name: 'LinkedIn', icon: <Linkedin size={24} />, href: '#', color: 'hover:text-[#0077b5]' },
-  { name: 'Twitter', icon: <Twitter size={24} />, href: '#', color: 'hover:text-[#1DA1F2]' },
-  { name: 'Email', icon: <Mail size={24} />, href: 'mailto:hello@example.com', color: 'hover:text-primary' },
+  { name: 'GitHub', icon: <Github size={24} />, href: 'https://github.com/NisargS28', color: 'hover:text-[#333]' },
+  { name: 'LinkedIn', icon: <Linkedin size={24} />, href: 'https://www.linkedin.com/in/nisarg-solanki-0970aa290', color: 'hover:text-[#0077b5]' },
+  { name: 'Twitter', icon: <Twitter size={24} />, href: 'https://x.com/NisargS28', color: 'hover:text-[#1DA1F2]' },
+  { name: 'Email', icon: <Mail size={24} />, href: 'mailto:nisargscodes28@gmail.com', color: 'hover:text-primary' },
 ];
 
 export default function ContactSection() {
@@ -22,7 +22,7 @@ export default function ContactSection() {
         <div className="flex flex-col lg:flex-row gap-16 md:gap-24">
           
           {/* Contact Info */}
-          <div className="flex-1">
+          <div className="flex-1 text-center lg:text-left">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-xl text-muted font-inter mb-12 max-w-md"
+              className="text-xl text-muted font-inter mb-12 max-w-md mx-auto lg:mx-0"
             >
               Currently looking for new opportunities in 2026. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </motion.p>
@@ -48,7 +48,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="flex gap-4"
+              className="flex gap-4 justify-center lg:justify-start"
             >
               {socialLinks.map((link) => (
                 <MagneticButton key={link.name}>
@@ -113,10 +113,10 @@ export default function ContactSection() {
         </div>
 
         {/* Footer */}
-        <div className="mt-32 pt-8 border-t border-gray-200 dark:border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-muted font-inter text-sm font-medium">
+        <div className="mt-32 pt-8 border-t border-gray-200 dark:border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-muted font-inter text-sm font-medium">
           <p>© {new Date().getFullYear()} Nisarg Solanki. All rights reserved.</p>
           <p className="flex items-center gap-1">
-            Built with <span className="text-red-500">♥</span> using Next.js & Framer Motion
+            Built with <span className="text-red-500">♥</span> by Nisarg Solanki
           </p>
         </div>
       </div>

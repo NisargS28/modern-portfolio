@@ -111,6 +111,12 @@ body {
   padding: 6rem 0;
 }
 
+@media (max-width: 640px) {
+  .section-padding {
+    padding: 4.5rem 0;
+  }
+}
+
 /* Blob animation */
 .blob {
   border-radius: 50% 60% 70% 40% / 60% 30% 70% 40%;

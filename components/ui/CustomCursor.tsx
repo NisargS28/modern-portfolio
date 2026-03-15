@@ -13,8 +13,11 @@ export default function CustomCursor() {
   const rafId = useRef<number | null>(null);
 
   useEffect(() => {
-    // Check if touch device
-    if (window.matchMedia('(hover: none)').matches) return;
+    // Disable custom cursor for touch and small screens to avoid sticky pointer artifacts.
+    if (window.matchMedia('(hover: none)').matches || window.innerWidth < 768) {
+      setIsVisible(false);
+      return;
+    }
 
     const onMouseMove = (e: MouseEvent) => {
       pos.current = { x: e.clientX, y: e.clientY };
@@ -65,7 +68,7 @@ export default function CustomCursor() {
       document.removeEventListener('mouseenter', onMouseEnter);
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, [isVisible]);
+  }, []);
 
   return (
     <>

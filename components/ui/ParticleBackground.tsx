@@ -1,11 +1,11 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
 
-function ParticleField() {
+function ParticleField({ isDark }: { isDark: boolean }) {
   const ref = useRef<any>(null);
   
   // Memoize the array to prevent recreation on every frame/render
@@ -30,11 +30,11 @@ function ParticleField() {
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#3B82F6"
-          size={0.005}
+          color={isDark ? '#60A5FA' : '#2563EB'}
+          size={isDark ? 0.005 : 0.0065}
           sizeAttenuation={true}
           depthWrite={false}
-          opacity={0.4}
+          opacity={isDark ? 0.35 : 0.65}
         />
       </Points>
     </group>
@@ -42,10 +42,23 @@ function ParticleField() {
 }
 
 export default function ParticleBackground() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const syncTheme = () => setIsDark(root.classList.contains('dark'));
+
+    syncTheme();
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none opacity-60">
+    <div className={`fixed inset-0 z-0 pointer-events-none ${isDark ? 'opacity-60' : 'opacity-85'}`}>
       <Canvas camera={{ position: [0, 0, 1] }}>
-        <ParticleField />
+        <ParticleField isDark={isDark} />
       </Canvas>
     </div>
   );

@@ -5,40 +5,40 @@ import { ArrowUpRight, Github } from 'lucide-react';
 
 const projects = [
   {
-    title: 'NexusAI',
-    category: 'Full Stack AI',
-    description: 'An AI-powered document analysis platform built with Next.js, FastAPI, and PostgreSQL.',
+    title: 'NGO Website',
+    category: 'Web Development',
+    description: 'A responsive website for a non-profit organization, built with Next.js and Tailwind CSS.',
     imageClass: 'bg-gradient-to-br from-blue-400 to-indigo-500',
-    tags: ['Next.js', 'Python', 'OpenAI API'],
-    link: '#',
+    tags: ['Next.js', 'Tailwind CSS', 'Vercel'],
+    link: 'www.sarthifoundationngo.org',
     github: '#'
   },
   {
-    title: 'CryptoFlow',
-    category: 'DeFi Dashboard',
-    description: 'Real-time cryptocurrency tracking dashboard with WebSockets and Three.js visualizer.',
+    title: 'Cashbook',
+    category: 'Expense Tracker',
+    description: 'A simple and intuitive expense tracking app built with React and Supabase.',
     imageClass: 'bg-gradient-to-br from-emerald-400 to-teal-500',
-    tags: ['React', 'Three.js', 'Zustand'],
-    link: '#',
-    github: '#'
+    tags: ['Twillo', 'Next.js', 'Supabase'],
+    link: 'https://book-keeping-nine.vercel.app/',
+    github: 'https://github.com/NisargS28/book-keeping'
   },
   {
-    title: 'Aura',
-    category: 'Social Platform',
-    description: 'A modern social media app focusing on audio first interactions and real-time messaging.',
+    title: 'Prasang',
+    category: 'Ecommerce website',
+    description: 'A modern e-commerce website for a local business, built with Next.js with Payment Gateway Integration.',
     imageClass: 'bg-gradient-to-br from-fuchsia-400 to-purple-500',
-    tags: ['React Native', 'Node.js', 'Socket.io'],
-    link: '#',
-    github: '#'
+    tags: ['Next.js', 'E-commerce', 'Payment Gateway','FreeLance Project'],
+    link: 'https://prasang-nu.vercel.app/',
+    github: 'https://github.com/NisargS28/prasang'
   },
   {
-    title: 'Zenith',
-    category: 'E-Commerce',
-    description: 'Headless e-commerce storefront with ultra-fast search and dynamic 3D product previews.',
+    title: 'City Vadapav',
+    category: 'Franchaise Website',
+    description: 'A franchise website for a popular local food chain, built with Next.js and Tailwind CSS.',
     imageClass: 'bg-gradient-to-br from-orange-400 to-rose-500',
-    tags: ['Next.js', 'Shopify UI', 'Tailwind'],
-    link: '#',
-    github: '#'
+    tags: ['Next.js', 'Tailwind','FreeLance Project'],
+    link: 'https://www.cityvadapav.in',
+    github: 'https://github.com/NisargS28/city-vadapav'
   }
 ];
 
@@ -50,13 +50,13 @@ export default function ProjectsSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 text-center md:text-left"
         >
           <div>
             <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-textMain mb-4">
               Featured <span className="gradient-text-blue">Work</span>
             </h2>
-            <p className="text-muted text-lg font-inter max-w-xl">
+            <p className="text-muted text-lg font-inter max-w-xl mx-auto md:mx-0">
               A selection of my recent projects. I love building things that look beautiful and work flawlessly.
             </p>
           </div>
@@ -87,14 +87,14 @@ export default function ProjectsSection() {
                   <a href={project.link} className="w-14 h-14 bg-background rounded-full flex items-center justify-center text-primary border border-gray-100 dark:border-white/10 hover:scale-110 transition-transform shadow-lg" data-cursor="hover">
                     <ArrowUpRight size={24} />
                   </a>
-                  <a href={project.github} className="w-14 h-14 bg-textMain dark:bg-white rounded-full flex items-center justify-center text-white dark:text-textMain hover:scale-110 transition-transform shadow-lg" data-cursor="hover">
+                  <a href={project.github} className="w-14 h-14 rounded-full flex items-center justify-center bg-white text-black dark:bg-black dark:text-white border border-black/10 dark:border-white/20 hover:scale-110 transition-transform shadow-lg" data-cursor="hover">
                     <Github size={24} />
                   </a>
                 </div>
               </div>
 
-              <div className="px-4 pb-4">
-                <div className="flex items-center justify-between mb-3">
+              <div className="px-4 pb-4 text-center md:text-left">
+                <div className="flex items-center justify-center md:justify-between mb-3">
                   <span className="text-sm font-semibold text-primary uppercase tracking-wider">{project.category}</span>
                 </div>
                 <h3 className="text-2xl font-grotesk font-bold text-textMain mb-3 group-hover:text-primary transition-colors">
@@ -103,7 +103,7 @@ export default function ProjectsSection() {
                 <p className="text-muted font-inter mb-6 line-clamp-2">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
                   {project.tags.map(tag => (
                     <span key={tag} className="px-3 py-1 bg-gray-50 text-muted border border-gray-200 rounded-lg text-sm font-medium">
                       {tag}

@@ -1,32 +1,38 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const certifications = [
   {
-    name: 'AWS Certified Solutions Architect',
-    issuer: 'Amazon Web Services',
-    date: 'Dec 2024',
-    icon: <Award className="text-[#FF9900]" size={32} />,
-    color: 'from-[#FF9900] to-yellow-400',
-    link: '#'
+    name: 'Supervised Machine Learning: Regression and Classification',
+    issuer: 'DeepLearning.AI & Stanford Online',
+    date: 'Feb 2026',
+    logo: '/Coursera-logo.png',
+    logoAlt: 'Coursera',
+    logoClass: '',
+    color: 'from-[#0056D2] to-blue-400',
+    link: 'https://www.coursera.org/account/accomplishments/verify/JIW26O14CS6E'
   },
   {
-    name: 'Meta Front-End Developer',
-    issuer: 'Coursera / Meta',
-    date: 'Oct 2024',
-    icon: <Award className="text-[#0668E1]" size={32} />,
-    color: 'from-[#0668E1] to-blue-400',
-    link: '#'
+    name: 'Oracle Certified Generative AI Professional',
+    issuer: 'Oracle',
+    date: 'Oct 2025',
+    logo: '/oracle-logo-trans.png',
+    logoAlt: 'Oracle',
+    logoClass: '',
+    color: 'from-[#F80000] to-red-400',
+    link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=BBF6572BA942E9DA88DDD32164C1EDBD452BADA3AF5463EB2E2D9EF4669C9A99'
   },
   {
-    name: 'Google Data Analytics Professional',
-    issuer: 'Google',
-    date: 'Aug 2024',
-    icon: <Award className="text-[#0F9D58]" size={32} />,
-    color: 'from-[#0F9D58] to-emerald-400',
-    link: '#'
+    name: 'Understanding Incubation and Entrepreneurship',
+    issuer: 'IIT Bombay through NPTEL',
+    date: 'Oct 2025',
+    logo: '/nptel-logo-trans.png',
+    logoAlt: 'NPTEL',
+    logoClass: '',
+    color: 'from-[#003865] to-blue-400',
+    link: 'https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/107/noc25-de20/Course/NPTEL25DE20S55060080210687921.pdf'
   },
 ];
 
@@ -62,9 +68,13 @@ export default function CertificationsSection() {
               {/* Soft glow background on hover */}
               <div className={`absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500 rounded-full`} />
               
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 flex items-center justify-center shadow-sm">
-                  {cert.icon}
+              <div className="flex justify-between items-start mb-6 gap-4">
+                <div className="h-14 md:h-16 lg:h-[4.5rem] flex items-center">
+                  <img
+                    src={cert.logo}
+                    alt={cert.logoAlt}
+                    className={`h-full w-auto max-w-[10.5rem] object-contain object-left ${cert.logoClass}`}
+                  />
                 </div>
                 
                 <a 

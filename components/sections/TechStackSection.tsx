@@ -8,21 +8,21 @@ const techCategories = [
     color: 'text-primary',
     border: 'border-primary/30',
     bg: 'bg-primary/5',
-    items: ['React', 'Next.js 15', 'Tailwind CSS', 'Framer Motion', 'TypeScript', 'Three.js']
+    items: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'JavaScript']
   },
   {
     name: 'Backend',
     color: 'text-emerald-500',
     border: 'border-emerald-500/30',
     bg: 'bg-emerald-500/5',
-    items: ['Node.js', 'Express', 'Python (FastAPI)', 'PostgreSQL', 'MongoDB', 'Redis']
+    items: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB', 'Supabase']
   },
   {
-    name: 'Tools & DevOps',
+    name: 'Language & Tools',
     color: 'text-accent',
     border: 'border-accent/30',
     bg: 'bg-accent/5',
-    items: ['Git', 'Docker', 'AWS', 'Vercel', 'Figma', 'Jest']
+    items: ['C++', 'Java','Python','Git', 'Github', 'Antigravity', 'Vercel', 'Render']
   }
 ];
 

@@ -25,28 +25,28 @@ export default function AboutSection() {
           className="flex flex-col lg:flex-row gap-12 xl:gap-20 items-center"
         >
           {/* LEFT — Text + Skills */}
-          <div className="flex-1 space-y-6 order-2 lg:order-1">
+          <div className="flex-1 space-y-6 order-2 lg:order-1 text-center lg:text-left">
             <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-textMain">
               Beyond the <span className="gradient-text">Screen</span>
             </h2>
-            <div className="space-y-4 text-lg text-muted font-inter leading-relaxed">
+            <div className="space-y-4 text-lg text-muted font-inter leading-relaxed max-w-2xl mx-auto lg:mx-0">
               <p>
                 I'm a passionate Computer Science student who treats code as a creative medium. I bridge the gap between complex technical problems and beautiful, intuitive user experiences.
               </p>
               <p>
-                When I'm not studying algorithms or building side projects, you'll find me analyzing UI/UX trends on Awwwards or exploring new generative AI tools.
+                My academic journey has equipped me with the skills and knowledge to tackle complex technical challenges and contribute to innovative projects. I'm always excited to explore new AI tools.
               </p>
             </div>
 
             {/* Stats */}
-            <div className="pt-2 flex gap-8 flex-wrap">
+            <div className="pt-2 flex gap-8 flex-wrap justify-center lg:justify-start">
               <div>
                 <div className="text-3xl font-grotesk font-bold text-textMain mb-1">3+</div>
                 <div className="text-xs font-bold uppercase tracking-wider text-primary">Years Coding</div>
               </div>
               <div className="w-px bg-gray-200 self-stretch" />
               <div>
-                <div className="text-3xl font-grotesk font-bold text-textMain mb-1">15+</div>
+                <div className="text-3xl font-grotesk font-bold text-textMain mb-1">6+</div>
                 <div className="text-xs font-bold uppercase tracking-wider text-secondary">Projects Built</div>
               </div>
               <div className="w-px bg-gray-200 self-stretch" />
@@ -57,7 +57,7 @@ export default function AboutSection() {
             </div>
 
             {/* Skills Grid */}
-            <div className="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <div className="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-3 max-w-2xl mx-auto lg:mx-0">
               {skills.map((skill, index) => (
                 <motion.div
                   key={skill.name}
