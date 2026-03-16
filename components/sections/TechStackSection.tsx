@@ -22,7 +22,7 @@ const techCategories = [
     color: 'text-accent',
     border: 'border-accent/30',
     bg: 'bg-accent/5',
-    items: ['C++', 'Java','Python','Git', 'Github', 'Antigravity', 'Vercel', 'Render']
+    items: ['C++', 'Java','Python','Git', 'Github', 'Vercel', 'Render']
   }
 ];
 
@@ -61,7 +61,7 @@ export default function TechStackSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`p-8 rounded-[2rem] border ${category.border} dark:bg-white/5 ${category.bg} shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group`}
+              className={`p-6 md:p-8 rounded-[2rem] border ${category.border} dark:bg-white/5 ${category.bg} shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group`}
             >
               <div className={`absolute -right-10 -top-10 w-40 h-40 ${category.bg} rounded-full blur-3xl group-hover:bg-opacity-80 transition-all duration-700`} />
               

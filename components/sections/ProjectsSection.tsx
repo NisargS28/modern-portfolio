@@ -73,7 +73,7 @@ export default function ProjectsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`group relative rounded-[2.5rem] p-4 bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all duration-500 ${index % 2 !== 0 ? 'md:mt-24' : ''}`}
+              className={`group relative rounded-[2.5rem] p-5 md:p-6 bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all duration-500 ${index % 2 !== 0 ? 'md:mt-24' : ''}`}
             >
               <div className={`relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 ${project.imageClass}`}>
                 {/* Simulated Project Image/Graphics */}

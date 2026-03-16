@@ -63,7 +63,7 @@ export default function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative p-8 rounded-[2rem] bg-background dark:bg-white/5 border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all group overflow-hidden"
+              className="relative p-6 md:p-8 rounded-[2rem] bg-background dark:bg-white/5 border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all group overflow-hidden"
             >
               {/* Soft glow background on hover */}
               <div className={`absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500 rounded-full`} />
@@ -81,7 +81,7 @@ export default function CertificationsSection() {
                   href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full flex items-center justify-center bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-muted hover:text-primary transition-colors cursor-pointer"
+                  className="w-11 h-11 md:w-10 md:h-10 rounded-full flex items-center justify-center bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-muted hover:text-primary transition-colors cursor-pointer"
                   aria-label="View Certificate"
                 >
                   <ExternalLink size={18} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />

@@ -27,7 +27,7 @@ export default function ContactSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-7xl font-grotesk font-bold text-textMain mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-grotesk font-bold text-textMain mb-6 leading-tight"
             >
               Let's build <br className="hidden md:block" />
               something <span className="gradient-text">great.</span>
@@ -72,7 +72,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="flex-1 w-full max-w-md mx-auto lg:mx-0"
           >
-            <form className="p-8 rounded-[2.5rem] bg-background border border-gray-100 dark:border-white/10 shadow-card flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="p-6 md:p-8 rounded-[2.5rem] bg-background border border-gray-100 dark:border-white/10 shadow-card flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
               <h3 className="text-2xl font-grotesk font-bold text-textMain mb-2">Send a message</h3>
               
               <div className="space-y-4">

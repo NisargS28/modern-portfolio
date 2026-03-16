@@ -88,7 +88,7 @@ export default function ExperienceSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
-                    className={`w-full max-w-xl mx-auto md:w-5/12 md:mx-0 md:ml-0 p-6 rounded-[2rem] bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all relative group overflow-hidden text-center md:text-left`}
+                    className={`w-full max-w-xl mx-auto md:w-5/12 md:mx-0 md:ml-0 p-5 md:p-6 rounded-[2rem] bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all relative group overflow-hidden text-center md:text-left`}
                   >
                     <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
                     

@@ -71,7 +71,7 @@ export default function HeroSection() {
           Portfolio Overview
         </motion.div>
 
-        <h1 className="text-4xl sm:text-5xl md:text-8xl font-grotesk font-bold tracking-tighter text-textMain leading-[1.1] mb-6">
+        <h1 className="text-3xl sm:text-5xl md:text-8xl font-grotesk font-bold tracking-tighter text-textMain leading-[1.1] mb-6">
           <motion.span
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}

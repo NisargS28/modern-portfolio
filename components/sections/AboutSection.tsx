@@ -22,7 +22,7 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col lg:flex-row gap-12 xl:gap-20 items-center"
+          className="flex flex-col lg:flex-row gap-8 lg:gap-12 xl:gap-20 items-center"
         >
           {/* LEFT — Text + Skills */}
           <div className="flex-1 space-y-6 order-2 lg:order-1 text-center lg:text-left">

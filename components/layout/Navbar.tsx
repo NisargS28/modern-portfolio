@@ -143,7 +143,7 @@ export default function Navbar() {
               (e.currentTarget as HTMLButtonElement).blur();
             }}
             aria-label="Toggle theme"
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-muted md:hover:text-primary md:hover:bg-primary/10 active:scale-95 transition-all duration-200"
+            className="w-11 h-11 md:w-9 md:h-9 rounded-xl flex items-center justify-center text-muted md:hover:text-primary md:hover:bg-primary/10 active:scale-95 transition-all duration-200"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -163,7 +163,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle menu"
-            className="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-muted md:hover:bg-gray-100 md:dark:hover:bg-white/5 active:scale-95 transition-colors"
+            className="md:hidden w-11 h-11 rounded-xl flex items-center justify-center text-muted md:hover:bg-gray-100 md:dark:hover:bg-white/5 active:scale-95 transition-colors"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -208,25 +208,25 @@ export default function Navbar() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06 }}
                     onClick={() => handleNavClick(link.href)}
-                    className="w-full text-center px-4 py-3 text-lg font-inter font-semibold text-textMain hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+                    className="w-full text-center px-4 py-4 text-xl font-inter font-semibold text-textMain hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
                   >
                     {link.label}
                   </motion.button>
                 ))}
               </div>
 
-              <div className="mt-auto pt-6 border-t border-gray-200 dark:border-white/10 flex items-center justify-center gap-3">
+              <div className="mt-auto pt-6 border-t border-gray-200 dark:border-white/10 flex items-center justify-center gap-4">
                 <a href="https://github.com/NisargS28" target="_blank" rel="noopener noreferrer" aria-label="GitHub"
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
-                  <Github size={18} />
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
+                  <Github size={22} />
                 </a>
                 <a href="https://linkedin.com/nisarg-solanki-0970aa290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
-                  <Linkedin size={18} />
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
+                  <Linkedin size={22} />
                 </a>
                 <a href="https://x.com/NisargS28" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
-                  <Twitter size={18} />
+                  className="w-12 h-12 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
+                  <Twitter size={22} />
                 </a>
               </div>
             </motion.div>

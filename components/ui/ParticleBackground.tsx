@@ -10,8 +10,12 @@ function ParticleField({ isDark }: { isDark: boolean }) {
   
   // Memoize the array to prevent recreation on every frame/render
   const sphere = useMemo(() => {
+    // Reduce particle count on mobile for performance
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+    const particleCount = isMobile ? 1500 : 5000;
+    
     // Array length must be a multiple of 3 (x, y, z) to prevent Three.js out-of-bounds NaN errors
-    const points = new Float32Array(5001);
+    const points = new Float32Array(particleCount * 3 + 1); // Ensures divisible logic in certain older drei versions + manual spacing
     random.inSphere(points, { radius: 1.5 });
     // Filter out any NaN values just to be absolutely safe
     for (let i = 0; i < points.length; i++) {

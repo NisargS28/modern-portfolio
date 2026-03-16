@@ -14,7 +14,12 @@ export default function CustomCursor() {
 
   useEffect(() => {
     // Disable custom cursor for touch and small screens to avoid sticky pointer artifacts.
-    if (window.matchMedia('(hover: none)').matches || window.innerWidth < 768) {
+    let isTouch = false;
+    try {
+      isTouch = window.matchMedia('(hover: none)').matches || window.innerWidth < 768;
+    } catch (e) {}
+
+    if (isTouch) {
       setIsVisible(false);
       return;
     }
