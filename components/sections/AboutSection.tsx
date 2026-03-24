@@ -92,7 +92,7 @@ export default function AboutSection() {
               <div className="absolute -inset-1 bg-gradient-to-br from-primary via-secondary to-accent rounded-[2rem] opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
 
               {/* Photo container */}
-              <div className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-[2rem] overflow-hidden border-4 border-white shadow-[0_20px_60px_rgba(59,130,246,0.2)] group-hover:shadow-[0_24px_80px_rgba(139,92,246,0.3)] transition-shadow duration-500">
+              <div className="relative w-72 h-96 sm:w-80 sm:h-[32rem] rounded-[2rem] overflow-hidden border-4 border-white shadow-[0_20px_60px_rgba(59,130,246,0.2)] group-hover:shadow-[0_24px_80px_rgba(139,92,246,0.3)] transition-shadow duration-500">
                 {/* Try to load actual photo; fallback to gradient avatar */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
@@ -109,7 +109,7 @@ export default function AboutSection() {
                 </div>
 
                 {/* If you place public/profile.jpg, uncomment this: */}
-                <Image src="/profile.jpeg" alt="Nisarg Solanki" fill className="object-cover object-center" priority />
+                <Image src="/student-img.png" alt="Nisarg Solanki" fill className="object-cover object-center" priority />
               </div>
 
               {/* Floating badge */}
