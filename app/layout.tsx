@@ -3,6 +3,7 @@ import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Nisarg Solanki — CS Student & Full Stack Developer",
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Navbar />
           <main>{children}</main>
         </SmoothScrollProvider>
+        <Analytics />
       </body>
     </html>
   );
