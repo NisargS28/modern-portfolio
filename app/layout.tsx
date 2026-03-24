@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Nisarg Solanki, a Computer Science student and Full Stack Developer passionate about building beautiful, performant web experiences.",
   keywords: ["portfolio", "developer", "react", "nextjs", "full stack", "computer science"],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   openGraph: {
     title: "Nisarg Solanki — CS Student & Full Stack Developer",
     description: "Building the future, one line of code at a time.",
