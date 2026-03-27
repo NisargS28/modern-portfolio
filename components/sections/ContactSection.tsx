@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Twitter, Send } from 'lucide-react';
+import { Mail, Github, Linkedin, Twitter, Send, Loader2 } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
+import { submitContactForm } from '@/app/actions/contact';
 
 const socialLinks = [
   { name: 'GitHub', icon: <Github size={24} />, href: 'https://github.com/NisargS28', color: 'hover:text-[#333]' },
@@ -12,6 +14,28 @@ const socialLinks = [
 ];
 
 export default function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' });
+
+  async function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setIsSubmitting(true);
+    setStatus({ type: null, message: '' });
+
+    const formData = new FormData(form);
+    const result = await submitContactForm(formData);
+
+    if (result.success) {
+      setStatus({ type: 'success', message: 'Message sent successfully!' });
+      form.reset();
+    } else {
+      setStatus({ type: 'error', message: result.error || 'Failed to send message.' });
+    }
+
+    setIsSubmitting(false);
+  }
+
   return (
     <section id="contact" className="section-padding relative z-10 overflow-hidden">
       {/* Background Decor */}
@@ -72,7 +96,7 @@ export default function ContactSection() {
             transition={{ duration: 0.6 }}
             className="flex-1 w-full max-w-md mx-auto lg:mx-0"
           >
-            <form className="p-6 md:p-8 rounded-[2.5rem] bg-background border border-gray-100 dark:border-white/10 shadow-card flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleFormSubmit} className="p-6 md:p-8 rounded-[2.5rem] bg-background border border-gray-100 dark:border-white/10 shadow-card flex flex-col gap-6">
               <h3 className="text-2xl font-grotesk font-bold text-textMain mb-2">Send a message</h3>
               
               <div className="space-y-4">
@@ -81,6 +105,8 @@ export default function ContactSection() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
+                    required
                     placeholder="Your Name"
                     className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-textMain font-inter focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                   />
@@ -90,6 +116,8 @@ export default function ContactSection() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
+                    required
                     placeholder="Your Email"
                     className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-textMain font-inter focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                   />
@@ -98,6 +126,8 @@ export default function ContactSection() {
                   <label htmlFor="message" className="sr-only">Message</label>
                   <textarea
                     id="message"
+                    name="message"
+                    required
                     rows={4}
                     placeholder="Your Message"
                     className="w-full px-6 py-4 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-textMain font-inter resize-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
@@ -105,8 +135,18 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <MagneticButton className="w-full py-4 rounded-2xl bg-primary text-white font-bold font-inter text-lg flex items-center justify-center gap-2 hover:bg-secondary transition-colors group">
-                Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              {status.message && (
+                <div className={`text-sm font-medium px-2 ${status.type === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+                  {status.message}
+                </div>
+              )}
+
+              <MagneticButton className={`w-full py-4 rounded-2xl bg-primary text-white font-bold font-inter text-lg flex items-center justify-center gap-2 transition-colors group ${isSubmitting ? 'opacity-70 pointer-events-none' : 'hover:bg-secondary'}`}>
+                {isSubmitting ? (
+                  <>Sending... <Loader2 size={20} className="animate-spin" /></>
+                ) : (
+                  <>Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /></>
+                )}
               </MagneticButton>
             </form>
           </motion.div>
