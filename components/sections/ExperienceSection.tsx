@@ -5,11 +5,18 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const experiences = [
   {
-    role: 'Frontend Developer Intern',
-    company: 'Web Development Committee, PDEU',
-    date: 'Dec 2025 - Present',
-    description: 'Contributing to the development and maintenance of the university’s official portal, ensuring a seamless user experience and responsive design.',
-    color: 'from-accent to-orange-400'
+    role: 'Diploma in Information Technology',
+    company: 'Sal Institute of Diploma Studies',
+    date: '2021 - 2024',
+    description: 'Relevant Coursework: Data Structures & Algorithms, Web Architecture, Artificial Intelligence, Database Systems, Computer Networks.',
+    color: 'from-emerald-500 to-teal-400'
+  },
+  {
+    role: 'Cyber Security Intern',
+    company: 'Heritage Cyberworld LLP',
+    date: 'Aug 2022',
+    description: ' Gained Knowledge about Threat Analysis and Mitigation, Security Audits,etc',
+    color: 'from-primary to-blue-400'
   },
   {
     role: 'Btech in Computer Science',
@@ -26,18 +33,11 @@ const experiences = [
     color: 'from-secondary to-purple-400'
   },
   {
-    role: 'Cyber Security Intern',
-    company: 'Heritage Cyberworld LLP',
-    date: 'Aug 2022',
-    description: ' Gained Knowledge about Threat Analysis and Mitigation, Security Audits,etc',
-    color: 'from-primary to-blue-400'
-  },
-  {
-    role: 'Diploma in Information Technology',
-    company: 'Sal Institute of Diploma Studies',
-    date: '2021 - 2024',
-    description: 'Relevant Coursework: Data Structures & Algorithms, Web Architecture, Artificial Intelligence, Database Systems, Computer Networks.',
-    color: 'from-emerald-500 to-teal-400'
+    role: 'Frontend Developer Intern',
+    company: 'Web Development Committee, PDEU',
+    date: 'Dec 2025 - Present',
+    description: 'Contributing to the development and maintenance of the university’s official portal, ensuring a seamless user experience and responsive design.',
+    color: 'from-accent to-orange-400'
   }
 ];
 
