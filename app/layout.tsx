@@ -44,6 +44,18 @@ export default function RootLayout({
           <main>{children}</main>
         </SmoothScrollProvider>
         <Analytics />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TCYR5DZYYQ"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TCYR5DZYYQ');
+          `}
+        </Script>
         <Script 
           id="chatbase-script" 
           strategy="afterInteractive" 
