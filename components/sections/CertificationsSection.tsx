@@ -5,6 +5,16 @@ import { ExternalLink } from 'lucide-react';
 
 const certifications = [
   {
+    name: 'Advanced Learning Algorithms',
+    issuer: 'DeepLearning.AI & Stanford Online',
+    date: 'May 2026',
+    logo: '/Coursera-logo.png',
+    logoAlt: 'Coursera',
+    logoClass: '',
+    color: 'from-[#0056D2] to-blue-400',
+    link: 'https://www.coursera.org/account/accomplishments/verify/WR3MLSR64P34'
+  },
+  {
     name: 'Supervised Machine Learning: Regression and Classification',
     issuer: 'DeepLearning.AI & Stanford Online',
     date: 'Feb 2026',
