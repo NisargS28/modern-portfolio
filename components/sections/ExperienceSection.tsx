@@ -120,6 +120,13 @@ export default function ExperienceSection() {
             {experiences.map((exp, index) => {
               const isEven = index % 2 === 0;
               const logo = exp.logo ?? getLogoForCompany(exp.company);
+              const mobileLogoEl = logo ? (
+                <img src={logo} alt={`${exp.company} logo`} className="w-36 h-20 object-contain" />
+              ) : (
+                <div className="w-36 h-20 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-lg font-bold text-white">
+                  {getInitials(exp.company)}
+                </div>
+              );
               return (
                 <div key={index} className={`relative flex flex-col md:flex-row items-center gap-6 ${isEven ? 'md:justify-start' : 'md:justify-end'}`}>
 
@@ -129,7 +136,7 @@ export default function ExperienceSection() {
                   {/* For even items: logo left (md), card right. For odd: card left, logo right. */}
                   {isEven ? (
                     <>
-                      <div className="w-full md:w-5/12 flex items-center justify-center md:justify-end">
+                      <div className="hidden md:flex w-full md:w-5/12 items-center justify-center md:justify-end">
                         {logo ? (
                           <img
                             src={logo}
@@ -151,7 +158,11 @@ export default function ExperienceSection() {
                     transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
                     className={`w-full max-w-xl mx-auto md:w-6/12 md:mx-0 p-5 md:p-6 rounded-[2rem] bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all relative group overflow-hidden text-center md:text-left`}
                   >
+                    <div className="flex md:hidden justify-center mb-4">
+                      {mobileLogoEl}
+                    </div>
                     <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
+                    
                     
                     <div className="flex flex-col gap-2 mb-4">
                       <span className="text-sm font-bold text-primary tracking-wider uppercase">{exp.date}</span>
@@ -173,6 +184,9 @@ export default function ExperienceSection() {
                         transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
                         className={`w-full max-w-xl mx-auto md:w-6/12 md:mx-0 p-5 md:p-6 rounded-[2rem] bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all relative group overflow-hidden text-center md:text-left`}
                       >
+                        <div className="flex md:hidden justify-center mb-4">
+                          {mobileLogoEl}
+                        </div>
                         <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
                         
                         <div className="flex flex-col gap-2 mb-4">
@@ -185,7 +199,7 @@ export default function ExperienceSection() {
                         </p>
                       </motion.div>
 
-                      <div className="w-full md:w-5/12 flex items-center justify-center md:justify-start">
+                      <div className="hidden md:flex w-full md:w-5/12 items-center justify-center md:justify-start">
                         {logo ? (
                           <img
                             src={logo}
@@ -198,6 +212,7 @@ export default function ExperienceSection() {
                           </div>
                         )}
                       </div>
+                      
                     </>
                   )}
                 </div>
