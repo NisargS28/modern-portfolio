@@ -1,149 +1,50 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import MagneticButton from '../ui/MagneticButton';
-import { ArrowRight, Eye, ChevronUp } from 'lucide-react';
-
-const heroLines = [
-  'I build digital experiences.',
-  'I design accessible products.',
-  'I craft polished interfaces.',
-  'I build scalable web apps.',
-];
+import { motion } from 'framer-motion';
+import { ArrowDownRight, ArrowUpRight, FileText, Github, Linkedin, Sparkles } from 'lucide-react';
 
 export default function HeroSection() {
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
-  const [lineIndex, setLineIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const currentLine = heroLines[lineIndex];
-    const hasFinishedTyping = displayedText === currentLine;
-    const hasFinishedDeleting = displayedText.length === 0;
-
-    const timeout = window.setTimeout(() => {
-      if (!isDeleting && !hasFinishedTyping) {
-        setDisplayedText(currentLine.slice(0, displayedText.length + 1));
-        return;
-      }
-
-      if (!isDeleting && hasFinishedTyping) {
-        setIsDeleting(true);
-        return;
-      }
-
-      if (isDeleting && !hasFinishedDeleting) {
-        setDisplayedText(currentLine.slice(0, displayedText.length - 1));
-        return;
-      }
-
-      setIsDeleting(false);
-      setLineIndex((currentIndex) => (currentIndex + 1) % heroLines.length);
-    }, !isDeleting && hasFinishedTyping ? 1400 : isDeleting ? 45 : 85);
-
-    return () => window.clearTimeout(timeout);
-  }, [displayedText, isDeleting, lineIndex]);
-
   return (
-    <section id="hero" className="relative min-h-[100svh] flex flex-col items-center justify-center overflow-hidden pt-32 sm:pt-28 md:pt-24 pb-16 sm:pb-12">
-      {/* Background blobs */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 blur-[100px] rounded-full blob" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-secondary/20 blur-[120px] rounded-full blob" style={{ animationDelay: '-5s' }} />
-        <div className="absolute top-[20%] right-[20%] w-[300px] h-[300px] bg-accent/20 blur-[80px] rounded-full blob" style={{ animationDelay: '-2s' }} />
+    <section id="hero" className="relative min-h-[100svh] overflow-hidden pt-32 pb-16 md:pt-40">
+      <div className="pointer-events-none absolute -right-40 top-16 h-[34rem] w-[34rem] rounded-full bg-primary/15 blur-[110px]" />
+      <div className="mx-auto grid min-h-[calc(100svh-12rem)] max-w-7xl grid-cols-1 items-center gap-14 px-6 lg:grid-cols-[1.35fr_.65fr]">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
+          <div className="mb-8 flex flex-wrap items-center gap-3 font-grotesk text-xs font-bold uppercase tracking-[.16em]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-emerald-600 dark:text-emerald-400"><span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />Open to 2027 opportunities</span>
+            <span className="text-muted">Ahmedabad, India</span>
+          </div>
+          <p className="mb-5 flex items-center gap-2 font-grotesk text-sm font-semibold text-primary"><Sparkles size={16} /> AI solutions + full-stack engineering</p>
+          <h1 className="max-w-5xl font-grotesk text-[clamp(3.4rem,8vw,7.8rem)] font-bold leading-[.88] tracking-[-.07em] text-textMain">
+            I turn messy workflows into <span className="text-primary">working products.</span>
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted md:text-xl">
+            I&apos;m Nisarg Solanki, a Computer Engineering student building AI-enabled web apps, RAG systems and practical automation that teams can use every day.
+          </p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#projects" className="group inline-flex items-center justify-center gap-2 rounded-full bg-textMain px-7 py-4 font-grotesk font-bold text-background transition-transform hover:-translate-y-1">Explore case studies <ArrowDownRight size={19} className="transition-transform group-hover:rotate-45" /></a>
+            <a href="/Nisarg%20Solanki_Resume.pdf" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full border border-textMain/20 px-7 py-4 font-grotesk font-bold text-textMain transition-colors hover:border-primary hover:text-primary"><FileText size={18} /> View resume</a>
+          </div>
+        </motion.div>
+
+        <motion.aside initial={{ opacity: 0, x: 28 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: .7, delay: .15 }} className="editorial-card relative rounded-[2rem] p-5 md:p-7">
+          <div className="mb-6 flex items-center justify-between border-b border-textMain/10 pb-5">
+            <span className="font-grotesk text-xs font-bold uppercase tracking-[.18em] text-muted">Current signal</span>
+            <span className="rounded-full bg-primary px-3 py-1 font-grotesk text-xs font-bold text-white">AI × Web</span>
+          </div>
+          <div className="space-y-5">
+            <div><p className="text-sm text-muted">Latest role</p><p className="mt-1 font-grotesk text-xl font-bold">AI Solutions Intern</p><p className="text-sm text-primary">SKAPS Industries</p></div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="rounded-2xl bg-primary p-4 text-white"><p className="text-3xl font-grotesk font-bold">90%</p><p className="mt-1 text-xs text-white/75">less invoice data entry</p></div>
+              <div className="rounded-2xl bg-[#dfff55] p-4 text-[#111318]"><p className="text-3xl font-grotesk font-bold">150</p><p className="mt-1 text-xs text-black/65">containers tracked / day</p></div>
+            </div>
+            <div className="flex gap-2">
+              <a href="https://github.com/NisargS28" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-textMain/10 font-semibold hover:border-primary hover:text-primary"><Github size={18}/> GitHub</a>
+              <a href="https://www.linkedin.com/in/nisarg-solanki-0970aa290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-textMain/10 font-semibold hover:border-primary hover:text-primary"><Linkedin size={18}/> LinkedIn</a>
+            </div>
+          </div>
+          <ArrowUpRight className="absolute -right-3 -top-3 h-12 w-12 rounded-full bg-accent p-3 text-white" />
+        </motion.aside>
       </div>
-
-      {/* Content */}
-      <motion.div
-        style={{ y: y1, opacity }}
-        className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 max-w-5xl"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="px-6 py-2 rounded-full glass mb-8 text-sm font-semibold text-primary/80 border border-primary/20 shadow-glow-blue"
-        ><span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
-          Portfolio Overview
-        </motion.div>
-
-        <h1 className="text-3xl sm:text-5xl md:text-8xl font-grotesk font-bold tracking-tighter text-textMain leading-[1.1] mb-6">
-          <motion.span
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
-            className="block"
-          >
-            Hi, I'm <span className="gradient-text">Nisarg</span>
-          </motion.span>
-          <motion.span
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-            className="mt-2 block min-h-[2.6rem] text-2xl sm:text-3xl text-muted/80 md:min-h-[4.5rem] md:text-5xl lg:text-6xl md:whitespace-nowrap"
-          >
-            <span>{displayedText}</span>
-            <motion.span
-              aria-hidden="true"
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }}
-              className="ml-1 inline-block text-primary"
-            >
-              |
-            </motion.span>
-          </motion.span>
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-base sm:text-lg md:text-xl text-muted max-w-2xl mb-10 sm:mb-12 font-inter"
-        >
-          Specializing in accessible, high-performance web applications using modern tech stacks. Actively seeking 2026 SWE opportunities.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-          className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto"
-        >
-          <MagneticButton
-            className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full font-bold text-base sm:text-lg hover:shadow-glow-blue transition-all group overflow-hidden"
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              View My Work <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </span>
-          </MagneticButton>
-          <MagneticButton
-            className="w-full sm:w-auto px-8 py-4 glass bg-white/60 dark:bg-white/10 text-textMain rounded-full font-bold text-base sm:text-lg hover:bg-white/80 dark:hover:bg-white/20 transition-all font-inter flex items-center justify-center gap-2 group border-2 border-primary/20 dark:border-white/40 shadow-sm"
-            onClick={() => window.open('/Nisarg Solanki_Resume.pdf', '_blank')}
-          >
-            <Eye size={20} className="group-hover:-translate-y-1 transition-transform text-secondary" />
-            View Resume
-          </MagneticButton>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        style={{ opacity }}
-        className="absolute bottom-6 sm:bottom-8 inset-x-0 hidden sm:flex flex-col items-center gap-2 z-10 pointer-events-none text-primary"
-      >
-        <span className="text-xs uppercase tracking-[0.2em] text-muted font-bold font-inter mb-2">Scroll to explore</span>
-        <motion.div
-          animate={{ y: [0, -15, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-        >
-          <ChevronUp size={32} />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

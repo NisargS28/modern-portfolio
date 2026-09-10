@@ -2,15 +2,15 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Twitter, Send, Loader2 } from 'lucide-react';
+import { Mail, Github, Linkedin, FileText, Send, Loader2 } from 'lucide-react';
 import MagneticButton from '../ui/MagneticButton';
 import { submitContactForm } from '@/app/actions/contact';
 
 const socialLinks = [
   { name: 'GitHub', icon: <Github size={24} />, href: 'https://github.com/NisargS28', color: 'hover:text-[#333]' },
   { name: 'LinkedIn', icon: <Linkedin size={24} />, href: 'https://www.linkedin.com/in/nisarg-solanki-0970aa290', color: 'hover:text-[#0077b5]' },
-  { name: 'Twitter', icon: <Twitter size={24} />, href: 'https://x.com/NisargS28', color: 'hover:text-[#1DA1F2]' },
-  { name: 'Email', icon: <Mail size={24} />, href: 'mailto:nisargscodes28@gmail.com', color: 'hover:text-primary' },
+  { name: 'Resume', icon: <FileText size={24} />, href: '/Nisarg%20Solanki_Resume.pdf', color: 'hover:text-accent' },
+  { name: 'Email', icon: <Mail size={24} />, href: 'mailto:nisargsolanki56@gmail.com', color: 'hover:text-primary' },
 ];
 
 export default function ContactSection() {
@@ -51,10 +51,9 @@ export default function ContactSection() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl sm:text-5xl md:text-7xl font-grotesk font-bold text-textMain mb-6 leading-tight"
+              className="text-4xl sm:text-5xl md:text-7xl font-grotesk font-bold text-textMain mb-6 leading-[.95] tracking-tight"
             >
-              Let's build <br className="hidden md:block" />
-              something <span className="gradient-text">great.</span>
+              Have a hard problem? <span className="text-primary">Let&apos;s make it usable.</span>
             </motion.h2>
             
             <motion.p
@@ -64,7 +63,7 @@ export default function ContactSection() {
               transition={{ delay: 0.1 }}
               className="text-xl text-muted font-inter mb-12 max-w-md mx-auto lg:mx-0"
             >
-              Currently looking for new opportunities in 2026. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              I&apos;m open to software engineering, full-stack and applied AI opportunities for 2027. Let&apos;s talk about the problem you&apos;re solving.
             </motion.p>
             
             <motion.div

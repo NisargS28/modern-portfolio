@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
 import Navbar from "@/components/layout/Navbar";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "Nisarg Solanki — CS Student & Full Stack Developer",
+  title: "Nisarg Solanki — AI Solutions & Full-Stack Engineer",
   description:
-    "Portfolio of Nisarg Solanki, a Computer Science student and Full Stack Developer passionate about building beautiful, performant web experiences.",
-  keywords: ["portfolio", "developer", "react", "nextjs", "full stack", "computer science"],
+    "Portfolio of Nisarg Solanki, a Computer Engineering student building AI-enabled full-stack products, RAG systems and workflow automation.",
+  keywords: ["Nisarg Solanki", "AI engineer", "full stack developer", "RAG", "Next.js", "automation"],
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon" },
@@ -20,8 +19,8 @@ export const metadata: Metadata = {
     apple: "/favicon.ico",
   },
   openGraph: {
-    title: "Nisarg Solanki — CS Student & Full Stack Developer",
-    description: "Building the future, one line of code at a time.",
+    title: "Nisarg Solanki — AI Solutions & Full-Stack Engineer",
+    description: "AI-enabled products, RAG systems and workflow automation built for real-world impact.",
     type: "website",
   },
 };
@@ -39,7 +38,6 @@ export default function RootLayout({
       </head>
       <body className="bg-background font-inter antialiased">
         <SmoothScrollProvider>
-          <CustomCursor />
           <Navbar />
           <main>{children}</main>
         </SmoothScrollProvider>

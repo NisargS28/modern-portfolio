@@ -2,88 +2,24 @@
 
 import { motion } from 'framer-motion';
 
-const techCategories = [
-  {
-    name: 'Frontend',
-    color: 'text-primary',
-    border: 'border-primary/30',
-    bg: 'bg-primary/5',
-    items: ['React', 'Next.js', 'Tailwind CSS', 'Framer Motion', 'JavaScript']
-  },
-  {
-    name: 'Backend',
-    color: 'text-emerald-500',
-    border: 'border-emerald-500/30',
-    bg: 'bg-emerald-500/5',
-    items: ['Node.js', 'Express', 'Python', 'PostgreSQL', 'MongoDB', 'Supabase']
-  },
-  {
-    name: 'Language & Tools',
-    color: 'text-accent',
-    border: 'border-accent/30',
-    bg: 'bg-accent/5',
-    items: ['C++', 'Java','Python','Git', 'Github', 'Vercel', 'Render']
-  }
+const capabilities = [
+  { id: 'A', title: 'AI & automation', copy: 'Building context-aware tools and operational workflows.', items: ['RAG', 'LLMs', 'Prompt engineering', 'Python', 'Power Automate', 'Data extraction'] },
+  { id: 'B', title: 'Full-stack products', copy: 'Taking an idea from interface to deployed application.', items: ['Next.js', 'React', 'Node.js', 'Express', 'REST APIs', 'Tailwind CSS'] },
+  { id: 'C', title: 'Data & delivery', copy: 'Connecting applications to reliable data and infrastructure.', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Supabase', 'Git/GitHub', 'Vercel'] },
 ];
 
 export default function TechStackSection() {
   return (
-    <section id="tech" className="section-padding relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 dark:from-primary/10 to-transparent skew-x-12 transform origin-top-right -z-10" />
-      
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-16 md:mb-24">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-grotesk font-bold text-textMain mb-6"
-          >
-            My Tech <span className="gradient-text">Arsenal</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-lg text-muted font-inter max-w-2xl mx-auto"
-          >
-            I always choose the right tool for the job. Here are the technologies I work with to bring ideas to life.
-          </motion.p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {techCategories.map((category, index) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`p-6 md:p-8 rounded-[2rem] border ${category.border} dark:bg-white/5 ${category.bg} shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group`}
-            >
-              <div className={`absolute -right-10 -top-10 w-40 h-40 ${category.bg} rounded-full blur-3xl group-hover:bg-opacity-80 transition-all duration-700`} />
-              
-              <h3 className={`text-2xl font-grotesk font-bold ${category.color} mb-8 relative z-10`}>
-                {category.name}
-              </h3>
-              
-              <div className="flex flex-wrap gap-3 relative z-10">
-                {category.items.map((item, i) => (
-                  <motion.span
-                    key={item}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + i * 0.05 }}
-                    whileHover={{ y: -3, scale: 1.05 }}
-                    className="px-4 py-2 bg-background dark:bg-white/5 rounded-xl text-textMain font-medium font-inter shadow-sm border border-gray-100 dark:border-white/10 hover:border-primary/30 dark:hover:border-primary/50 transition-colors cursor-default"
-                  >
-                    {item}
-                  </motion.span>
-                ))}
-              </div>
+    <section id="tech" className="section-padding relative z-10 bg-[#111318] text-white">
+      <div className="mx-auto max-w-7xl px-6">
+        <span className="section-kicker !text-[#dfff55]">03 / Capabilities</span>
+        <div className="mb-14 grid gap-6 lg:grid-cols-2"><h2 className="font-grotesk text-4xl font-bold tracking-tight md:text-6xl">Tools change. The ability to ship stays.</h2><p className="max-w-xl self-end text-lg leading-relaxed text-white/60">I use the stack that fits the problem, with strongest hands-on experience across Next.js, Python, SQL, APIs and applied AI.</p></div>
+        <div className="divide-y divide-white/15 border-y border-white/15">
+          {capabilities.map((capability, index) => (
+            <motion.div key={capability.title} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * .08 }} className="grid gap-5 py-8 md:grid-cols-[70px_.7fr_1.3fr] md:items-center">
+              <span className="font-grotesk text-sm font-bold text-[#dfff55]">{capability.id}</span>
+              <div><h3 className="font-grotesk text-2xl font-bold">{capability.title}</h3><p className="mt-2 max-w-sm text-sm text-white/55">{capability.copy}</p></div>
+              <div className="flex flex-wrap gap-2 md:justify-end">{capability.items.map(item => <span key={item} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/75 transition-colors hover:border-[#dfff55] hover:text-[#dfff55]">{item}</span>)}</div>
             </motion.div>
           ))}
         </div>

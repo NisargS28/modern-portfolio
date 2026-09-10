@@ -1,224 +1,46 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const experiences = [
   {
-    role: 'Diploma in Information Technology',
-    company: 'Sal Institute of Diploma Studies',
-    date: '2021 - 2024',
-    description: 'Relevant Coursework: Data Structures & Algorithms, Web Architecture, Artificial Intelligence, Database Systems, Computer Networks.',
-    logo: '/logos/sal-1.png',
-    color: 'from-emerald-500 to-teal-400'
+    date: 'May — Jul 2026', role: 'AI Solutions Intern', company: 'SKAPS Industries India Pvt. Ltd.',
+    bullets: ['Built an organization-specific RAG chatbot for context-aware internal answers.', 'Automated extraction of 10 invoice fields, reducing manual data entry by about 90%.', 'Automated shipment status, ETA and ETD tracking for roughly 150 containers per day.'],
+    tags: ['Python', 'RAG', 'Power Automate', 'Next.js']
   },
   {
-    role: 'Cyber Security Intern',
-    company: 'Heritage Cyberworld LLP',
-    date: 'Aug 2022',
-    description: ' Gained Knowledge about Threat Analysis and Mitigation, Security Audits,etc',
-    logo: '/logos/HCW.png',
-    color: 'from-primary to-blue-400'
+    date: 'Dec 2025 — Jan 2026', role: 'Frontend Web Developer Intern', company: 'Web Development Committee, PDEU',
+    bullets: ['Built reusable Mentor-Mentee Portal interfaces in Next.js.', 'Integrated Appwrite APIs and multi-file ZIP downloads from cloud storage.'],
+    tags: ['Next.js', 'React', 'Appwrite', 'REST APIs']
   },
   {
-    role: 'Btech in Computer Science',
-    company: 'Pandit Deendayal Energy University',
-    date: '2024 - 2027',
-    description: 'Relevant Coursework: Data Structures & Algorithms, Web Architecture, Artificial Intelligence, Database Systems, Computer Networks.',
-    logo: '/logos/pdeu-1.png',
-    color: 'from-accent to-orange-400'
+    date: 'Jun — Jul 2025', role: 'Frontend Web Developer', company: 'Webdesk Solutions Pvt. Ltd.',
+    bullets: ['Completed practical MERN training and implemented full-stack application features.', 'Strengthened REST API, database integration and modern frontend fundamentals.'],
+    tags: ['MERN', 'Node.js', 'MongoDB', 'React']
   },
   {
-    role: 'React js Intern',
-    company: 'Webdesk Solutions Pvt. Ltd.',
-    date: 'Jun 2025 ',
-    description: 'Built dynamic user interfaces and reusable components for client projects, enhancing user engagement and satisfaction.',
-    logo: '/logos/webdesk_logo.webp',
-    color: 'from-secondary to-purple-400'
+    date: 'Jul — Aug 2023', role: 'Cyber Security Intern', company: 'Heritage Cyberworld LLP',
+    bullets: ['Used Wireshark, Snort, Nessus and OpenVAS for monitoring and vulnerability assessment.', 'Supported security audits, threat analysis and incident-response activities.'],
+    tags: ['Cybersecurity', 'Wireshark', 'Nessus', 'Incident response']
   },
-  {
-    role: 'Frontend Developer Intern',
-    company: 'Web Development Committee, PDEU',
-    date: 'Dec 2025 - Jan 2026',
-    description: 'Contributing to the development and maintenance of the university’s official portal, ensuring a seamless user experience and responsive design.',
-    logo: '/logos/wdc.jpg',
-    color: 'from-accent to-orange-400'
-  },
-  {
-    role: 'Artificial Intelligence Intern',
-    company: 'SKAPS Industries India Pvt. Ltd.',
-    date: 'May 2025 - Present',
-    description: 'I am involved in developing and implementing intelligent automation solutions using Artificial Intelligence, Machine Learning, and Microsoft Power Automate.',
-    logo: '/logos/SKAPS-Logo.webp',
-    color: 'from-accent to-orange-400'
-  }
 ];
 
 export default function ExperienceSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end center"]
-  });
-
-  const getInitials = (name: string) =>
-    name
-      .split(' ')
-      .map((n) => n[0])
-      .slice(0, 2)
-      .join('')
-      .toUpperCase();
-
-  // Available logo files placed in public/logos
-  const availableLogos = [
-    'HCW.png',
-    'pdeu-1.png',
-    'sal-1.png',
-    'SKAPS-Logo.webp',
-    'wdc.jpg',
-    'webdesk_logo.webp'
-  ];
-
-  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
-
-  const getLogoForCompany = (company: string) => {
-    const norm = normalize(company);
-    const found = availableLogos.find((f) => {
-      const base = f.replace(/\.[^/.]+$/, '');
-      const nbase = normalize(base);
-      return norm.includes(nbase) || nbase.includes(norm);
-    });
-    return found ? `/logos/${found}` : undefined;
-  };
-
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-
   return (
     <section id="experience" className="section-padding relative z-10">
-      <div className="max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-textMain mb-6">
-            Journey & <span className="gradient-text">Experience</span>
-          </h2>
-        </motion.div>
-
-        <div ref={containerRef} className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gray-200 rounded-full overflow-hidden">
-            <motion.div 
-              style={{ height: lineHeight }} 
-              className="w-full bg-gradient-to-b from-primary via-secondary to-accent" 
-            />
-          </div>
-
-          <div className="space-y-12 md:space-y-24">
-            {experiences.map((exp, index) => {
-              const isEven = index % 2 === 0;
-              const logo = exp.logo ?? getLogoForCompany(exp.company);
-              const mobileLogoEl = logo ? (
-                <img src={logo} alt={`${exp.company} logo`} className="w-36 h-20 object-contain" />
-              ) : (
-                <div className="w-36 h-20 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-lg font-bold text-white">
-                  {getInitials(exp.company)}
-                </div>
-              );
-              return (
-                <div key={index} className={`relative flex flex-col md:flex-row items-center gap-6 ${isEven ? 'md:justify-start' : 'md:justify-end'}`}>
-
-                  {/* Timeline Dot */}
-                  <div className="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-background rounded-full border-[3px] border-primary z-10 shadow-[0_0_10px_rgba(59,130,246,0.5)]" />
-
-                  {/* For even items: logo left (md), card right. For odd: card left, logo right. */}
-                  {isEven ? (
-                    <>
-                      <div className="hidden md:flex w-full md:w-5/12 items-center justify-center md:justify-end">
-                        {logo ? (
-                          <img
-                            src={logo}
-                            alt={`${exp.company} logo`}
-                            className="w-40 h-24 md:w-48 md:h-28 object-contain"
-                          />
-                        ) : (
-                          <div className="w-40 h-24 md:w-48 md:h-28 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-lg font-bold text-white">
-                            {getInitials(exp.company)}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Content Card */}
-                      <motion.div
-                    initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
-                    className={`w-full max-w-xl mx-auto md:w-6/12 md:mx-0 p-5 md:p-6 rounded-[2rem] bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all relative group overflow-hidden text-center md:text-left`}
-                  >
-                    <div className="flex md:hidden justify-center mb-4">
-                      {mobileLogoEl}
-                    </div>
-                    <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
-                    
-                    
-                    <div className="flex flex-col gap-2 mb-4">
-                      <span className="text-sm font-bold text-primary tracking-wider uppercase">{exp.date}</span>
-                      <h3 className="text-2xl font-grotesk font-bold text-textMain">{exp.role}</h3>
-                      <span className="text-muted font-inter font-medium">{exp.company}</span>
-                    </div>
-                    <p className="text-muted font-inter leading-relaxed">
-                      {exp.description}
-                    </p>
-                      </motion.div>
-                    </>
-                  ) : (
-                    <>
-                      {/* Content Card */}
-                      <motion.div
-                        initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.6, type: "spring", stiffness: 50 }}
-                        className={`w-full max-w-xl mx-auto md:w-6/12 md:mx-0 p-5 md:p-6 rounded-[2rem] bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all relative group overflow-hidden text-center md:text-left`}
-                      >
-                        <div className="flex md:hidden justify-center mb-4">
-                          {mobileLogoEl}
-                        </div>
-                        <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${exp.color} transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500`} />
-                        
-                        <div className="flex flex-col gap-2 mb-4">
-                          <span className="text-sm font-bold text-primary tracking-wider uppercase">{exp.date}</span>
-                          <h3 className="text-2xl font-grotesk font-bold text-textMain">{exp.role}</h3>
-                          <span className="text-muted font-inter font-medium">{exp.company}</span>
-                        </div>
-                        <p className="text-muted font-inter leading-relaxed">
-                          {exp.description}
-                        </p>
-                      </motion.div>
-
-                      <div className="hidden md:flex w-full md:w-5/12 items-center justify-center md:justify-start">
-                        {logo ? (
-                          <img
-                            src={logo}
-                            alt={`${exp.company} logo`}
-                            className="w-40 h-24 md:w-48 md:h-28 object-contain"
-                          />
-                        ) : (
-                          <div className="w-40 h-24 md:w-48 md:h-28 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-lg font-bold text-white">
-                            {getInitials(exp.company)}
-                          </div>
-                        )}
-                      </div>
-                      
-                    </>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-12 grid gap-6 lg:grid-cols-2">
+          <div><span className="section-kicker">04 / Journey</span><h2 className="font-grotesk text-4xl font-bold tracking-tight md:text-6xl">Learning through real constraints.</h2></div>
+          <div className="self-end rounded-2xl border border-textMain/10 p-5 text-sm leading-relaxed text-muted"><strong className="font-grotesk text-textMain">Education:</strong> B.Tech in Computer Engineering, Pandit Deendayal Energy University (2024—2027), following a Diploma in Information Technology from SAL Institute (CGPA 8.73).</div>
+        </div>
+        <div className="border-t border-textMain/15">
+          {experiences.map((experience, index) => (
+            <motion.article key={experience.company} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * .06 }} className="grid gap-5 border-b border-textMain/15 py-8 lg:grid-cols-[.35fr_.55fr_1.1fr]">
+              <p className="font-grotesk text-sm font-bold text-primary">{experience.date}</p>
+              <div><h3 className="font-grotesk text-xl font-bold">{experience.role}</h3><p className="mt-1 text-sm text-muted">{experience.company}</p></div>
+              <div><ul className="space-y-2 text-sm leading-relaxed text-muted">{experience.bullets.map(bullet => <li key={bullet} className="flex gap-3"><span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent" />{bullet}</li>)}</ul><div className="mt-5 flex flex-wrap gap-2">{experience.tags.map(tag => <span key={tag} className="rounded-full bg-textMain/5 px-3 py-1 text-xs font-semibold text-muted">{tag}</span>)}</div></div>
+            </motion.article>
+          ))}
         </div>
       </div>
     </section>

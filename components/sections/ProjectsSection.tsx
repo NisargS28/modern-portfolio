@@ -1,124 +1,73 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Github } from 'lucide-react';
+import { ArrowUpRight, Github, LockKeyhole, MessageSquareText, ReceiptText, ShoppingBag } from 'lucide-react';
 
 const projects = [
   {
-    title: 'NGO Website',
-    category: 'Web Development',
-    description: 'A responsive website for a non-profit organization, built with Next.js and Tailwind CSS.',
-    imageClass: 'bg-gradient-to-br from-blue-400 to-indigo-500',
-    tags: ['Next.js', 'Tailwind CSS', 'Vercel'],
-    link: 'www.sarthifoundationngo.org',
-    github: '#'
+    number: '01', title: 'Ledgerly', label: 'Secure bookkeeping platform',
+    summary: 'A multi-book Cash In / Cash Out product with authentication, fast search and filters, PDF reports and WhatsApp-based entry creation.',
+    impact: 'Privacy-first records with practical daily workflows',
+    tags: ['Next.js', 'Supabase', 'PostgreSQL', 'Twilio'],
+    link: 'https://book-keeping-nine.vercel.app/', github: 'https://github.com/NisargS28/book-keeping', icon: LockKeyhole,
+    tone: 'bg-[#2855ff] text-white'
   },
   {
-    title: 'Cashbook',
-    category: 'Expense Tracker',
-    description: 'A simple and intuitive expense tracking app built with React and Supabase.',
-    imageClass: 'bg-gradient-to-br from-emerald-400 to-teal-500',
-    tags: ['Twillo', 'Next.js', 'Supabase'],
-    link: 'https://book-keeping-nine.vercel.app/',
-    github: 'https://github.com/NisargS28/book-keeping'
+    number: '02', title: 'Sarthi Foundation', label: 'Production NGO platform',
+    summary: 'A responsive, SEO-focused NGO website with secure donations and an AI chatbot that helps visitors find information quickly.',
+    impact: '300+ monthly visitors · 150% search visibility growth',
+    tags: ['Next.js', 'AI chatbot', 'Razorpay', 'SEO'],
+    link: 'https://www.sarthifoundationngo.org/', github: null, icon: MessageSquareText,
+    tone: 'bg-[#dfff55] text-[#111318]'
   },
   {
-    title: 'Prasang',
-    category: 'Ecommerce website',
-    description: 'A modern e-commerce website for a local business, built with Next.js with Payment Gateway Integration.',
-    imageClass: 'bg-gradient-to-br from-fuchsia-400 to-purple-500',
-    tags: ['Next.js', 'E-commerce', 'Payment Gateway','FreeLance Project'],
-    link: 'https://prasang-nu.vercel.app/',
-    github: 'https://github.com/NisargS28/prasang'
+    number: '03', title: 'Prasang', label: 'Boutique commerce experience',
+    summary: 'An end-to-end boutique storefront covering discovery, checkout, Razorpay payment verification, receipts and live admin notifications.',
+    impact: 'Complete browse-to-order purchase journey',
+    tags: ['Next.js', 'Tailwind CSS', 'Razorpay', 'Automation'],
+    link: 'https://prasang-nu.vercel.app/', github: 'https://github.com/NisargS28/prasang', icon: ShoppingBag,
+    tone: 'bg-[#ff6b35] text-white'
   },
   {
-    title: 'City Vadapav',
-    category: 'Franchaise Website',
-    description: 'A franchise website for a popular local food chain, built with Next.js and Tailwind CSS.',
-    imageClass: 'bg-gradient-to-br from-orange-400 to-rose-500',
-    tags: ['Next.js', 'Tailwind','FreeLance Project'],
-    link: 'https://www.cityvadapav.in',
-    github: 'https://github.com/NisargS28/city-vadapav'
+    number: '04', title: 'Restaurant POS', label: 'Operations management system',
+    summary: 'A role-based restaurant POS for menu, tables, KOT generation, billing, transactions and daily sales reporting.',
+    impact: 'Designed for fast cashier and admin workflows',
+    tags: ['Next.js', 'SQL', 'Authentication', 'Analytics'],
+    link: null, github: null, icon: ReceiptText,
+    tone: 'bg-[#171923] text-white'
   }
 ];
 
 export default function ProjectsSection() {
   return (
     <section id="projects" className="section-padding relative z-10">
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6 text-center md:text-left"
-        >
-          <div>
-            <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-textMain mb-4">
-              Featured <span className="gradient-text-blue">Work</span>
-            </h2>
-            <p className="text-muted text-lg font-inter max-w-xl mx-auto md:mx-0">
-              A selection of my recent projects. I love building things that look beautiful and work flawlessly.
-            </p>
-          </div>
-          <button className="text-primary font-inter font-semibold hover:text-secondary transition-colors items-center gap-2 group hidden md:flex" data-cursor="hover">
-            View full archive <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`group relative rounded-[2.5rem] p-5 md:p-6 bg-background border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all duration-500 ${index % 2 !== 0 ? 'md:mt-24' : ''}`}
-            >
-              <div className={`relative w-full aspect-[4/3] rounded-[2rem] overflow-hidden mb-6 ${project.imageClass}`}>
-                {/* Simulated Project Image/Graphics */}
-                <div className="absolute inset-0 noise" />
-                <div className="absolute inset-4 glass-dark rounded-[1.5rem] flex items-center justify-center transform group-hover:scale-105 transition-transform duration-700 ease-out">
-                  <span className="text-white/80 font-grotesk font-bold text-3xl tracking-widest uppercase">{project.title}</span>
-                </div>
-                
-                {/* Overlay Links */}
-                <div className="absolute inset-0 bg-textMain/40 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
-                  <a href={project.link} className="w-14 h-14 bg-background rounded-full flex items-center justify-center text-primary border border-gray-100 dark:border-white/10 hover:scale-110 transition-transform shadow-lg" data-cursor="hover">
-                    <ArrowUpRight size={24} />
-                  </a>
-                  <a href={project.github} className="w-14 h-14 rounded-full flex items-center justify-center bg-white text-black dark:bg-black dark:text-white border border-black/10 dark:border-white/20 hover:scale-110 transition-transform shadow-lg" data-cursor="hover">
-                    <Github size={24} />
-                  </a>
-                </div>
-              </div>
-
-              <div className="px-4 pb-4 text-center md:text-left">
-                <div className="flex items-center justify-center md:justify-between mb-3">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wider">{project.category}</span>
-                </div>
-                <h3 className="text-2xl font-grotesk font-bold text-textMain mb-3 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-muted font-inter mb-6 line-clamp-2">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-gray-50 text-muted border border-gray-200 rounded-lg text-sm font-medium">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div><span className="section-kicker">02 / Selected work</span><h2 className="font-grotesk text-4xl font-bold tracking-tight md:text-6xl">Case studies, not just cards.</h2></div>
+          <p className="max-w-md text-muted">Four projects that show how I think across product, backend, data and real users.</p>
         </div>
-        
-        <div className="mt-12 flex justify-center md:hidden">
-            <button className="text-primary font-inter font-semibold items-center gap-2 group flex" data-cursor="hover">
-              View full archive <ArrowUpRight size={20} />
-            </button>
+        <div className="grid gap-5 md:grid-cols-2">
+          {projects.map((project, index) => {
+            const Icon = project.icon;
+            return (
+              <motion.article key={project.title} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ delay: index * .08 }} className="editorial-card group overflow-hidden rounded-[2rem]">
+                <div className={`relative min-h-56 p-7 ${project.tone}`}>
+                  <div className="flex items-start justify-between"><span className="font-grotesk text-sm font-bold opacity-70">PROJECT / {project.number}</span><Icon size={36} strokeWidth={1.5} /></div>
+                  <div className="absolute bottom-7 left-7 right-7"><p className="mb-2 text-sm font-semibold opacity-70">{project.label}</p><h3 className="font-grotesk text-4xl font-bold tracking-tight md:text-5xl">{project.title}</h3></div>
+                </div>
+                <div className="p-7">
+                  <p className="text-base leading-relaxed text-muted">{project.summary}</p>
+                  <p className="mt-5 border-l-2 border-primary pl-4 font-grotesk text-sm font-bold text-textMain">{project.impact}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">{project.tags.map(tag => <span key={tag} className="rounded-full border border-textMain/10 px-3 py-1.5 text-xs font-semibold text-muted">{tag}</span>)}</div>
+                  <div className="mt-7 flex gap-3">
+                    {project.link && <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-grotesk text-sm font-bold text-primary hover:underline">Live product <ArrowUpRight size={16}/></a>}
+                    {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-grotesk text-sm font-bold text-muted hover:text-primary"><Github size={16}/> Source</a>}
+                    {!project.link && <span className="font-grotesk text-sm font-bold text-muted">Private build</span>}
+                  </div>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

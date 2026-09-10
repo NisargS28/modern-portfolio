@@ -5,20 +5,20 @@
 @tailwind utilities;
 
 :root {
-  --bg: #F8FAFF;
-  --primary: #3B82F6;
-  --secondary: #8B5CF6;
-  --accent: #F97316;
-  --cyan: #06B6D4;
-  --coral: #F43F5E;
-  --text: #1F2937;
-  --muted: #6B7280;
+  --bg: #f4f2eb;
+  --primary: #2855ff;
+  --secondary: #695cff;
+  --accent: #ff6b35;
+  --cyan: #10b8a6;
+  --coral: #ff5c7a;
+  --text: #111318;
+  --muted: #63666f;
 }
 
 .dark {
-  --bg: #0B1120;
-  --text: #F8FAFF;
-  --muted: #94A3B8;
+  --bg: #0a0b0f;
+  --text: #f7f5ef;
+  --muted: #a7a8ae;
 }
 
 * {
@@ -28,8 +28,7 @@
 }
 
 html {
-  scroll-behavior: auto; /* Lenis handles smooth scroll */
-  cursor: none;
+  scroll-behavior: auto;
 }
 
 body {
@@ -39,6 +38,16 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image:
+    linear-gradient(rgba(17, 19, 24, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(17, 19, 24, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.dark body {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */
@@ -108,12 +117,51 @@ body {
 
 /* Section padding */
 .section-padding {
-  padding: 6rem 0;
+  padding: 7rem 0;
 }
 
 @media (max-width: 640px) {
   .section-padding {
     padding: 4rem 0;
+  }
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.section-kicker::before {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  background: currentColor;
+}
+
+.editorial-card {
+  background: color-mix(in srgb, var(--bg) 90%, white 10%);
+  border: 1px solid color-mix(in srgb, var(--text) 13%, transparent);
+  box-shadow: 0 18px 60px rgba(17, 19, 24, 0.07);
+}
+
+.dark .editorial-card {
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
 

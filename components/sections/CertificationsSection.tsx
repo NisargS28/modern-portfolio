@@ -55,17 +55,18 @@ export default function CertificationsSection() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-16 md:mb-24 text-center md:text-left"
+          className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-grotesk font-bold text-textMain mb-4">
-            Licenses & <span className="gradient-text">Certifications</span>
+          <span className="section-kicker">05 / Credentials</span>
+          <h2 className="text-4xl md:text-6xl font-grotesk font-bold text-textMain mb-4 tracking-tight">
+            Proof of continuous learning.
           </h2>
           <p className="text-lg text-muted font-inter max-w-2xl mx-auto md:mx-0">
-            Professional credentials and continuous learning paths I've pursued to expand my technical expertise.
+            Professional credentials and continuous learning paths I&apos;ve pursued to expand my technical expertise.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {certifications.map((cert, index) => (
             <motion.div
               key={cert.name}
@@ -73,7 +74,7 @@ export default function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative p-6 md:p-8 rounded-[2rem] bg-background dark:bg-white/5 border border-gray-100 dark:border-white/10 shadow-card hover:shadow-card-hover transition-all group overflow-hidden"
+              className="editorial-card relative p-6 md:p-8 rounded-[2rem] transition-all group overflow-hidden"
             >
               {/* Soft glow background on hover */}
               <div className={`absolute -right-20 -top-20 w-40 h-40 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 blur-3xl transition-opacity duration-500 rounded-full`} />

@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Github, Linkedin, Twitter, Sun, Moon, Menu, X } from 'lucide-react';
+import { Github, Linkedin, Sun, Moon, Menu, X, FileText } from 'lucide-react';
 
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Tech', href: '#tech' },
-  { label: 'Experience', href: '#experience' },
+  { label: 'Capabilities', href: '#tech' },
+  { label: 'Journey', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -52,10 +52,10 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-      className={`fixed top-5 md:top-8 left-0 right-0 z-50 mx-auto transition-all duration-500 ${
+      className={`fixed top-4 left-0 right-0 z-50 mx-auto transition-all duration-500 ${
         scrolled
-          ? 'max-w-5xl glass border border-transparent dark:border-transparent rounded-2xl shadow-glass px-4 sm:px-6 py-3'
-          : 'max-w-6xl bg-transparent px-4 sm:px-6 py-4'
+          ? 'max-w-6xl glass rounded-2xl shadow-glass px-4 sm:px-6 py-3'
+          : 'max-w-7xl bg-transparent px-4 sm:px-6 py-4'
       }`}
     >
       {/* 3-column grid: LEFT=links  CENTER=logo  RIGHT=icons */}
@@ -93,11 +93,11 @@ export default function Navbar() {
           onClick={() => handleNavClick('#hero')}
           className="flex items-center gap-2 group justify-self-center"
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-grotesk font-bold text-sm shadow-glow-blue group-hover:scale-110 transition-transform duration-300">
-            N
+          <div className="w-9 h-9 rounded-full bg-textMain flex items-center justify-center text-background font-grotesk font-bold text-xs group-hover:rotate-12 transition-transform duration-300">
+            NS
           </div>
           <span className="hidden sm:inline font-grotesk font-semibold text-textMain text-base tracking-tight">
-            Nisarg<span className="text-primary">.</span>
+            Nisarg Solanki<span className="text-primary">.</span>
           </span>
         </Link>
 
@@ -116,7 +116,7 @@ export default function Navbar() {
               <Github size={18} />
             </a>
             <a
-              href="https://linkedin.com/nisarg-solanki-0970aa290"
+              href="https://www.linkedin.com/in/nisarg-solanki-0970aa290"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -125,13 +125,13 @@ export default function Navbar() {
               <Linkedin size={18} />
             </a>
             <a
-              href="https://x.com/NisargS28"
+              href="/Nisarg%20Solanki_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Twitter"
+              aria-label="Resume"
               className="w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all duration-200"
             >
-              <Twitter size={18} />
+              <FileText size={18} />
             </a>
             <div className="w-px h-5 bg-gray-200 dark:bg-white/10 mx-1" />
           </div>
@@ -220,13 +220,13 @@ export default function Navbar() {
                   className="w-12 h-12 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
                   <Github size={22} />
                 </a>
-                <a href="https://linkedin.com/nisarg-solanki-0970aa290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                <a href="https://www.linkedin.com/in/nisarg-solanki-0970aa290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
                   className="w-12 h-12 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
                   <Linkedin size={22} />
                 </a>
-                <a href="https://x.com/NisargS28" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                <a href="/Nisarg%20Solanki_Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Resume"
                   className="w-12 h-12 rounded-xl flex items-center justify-center text-muted hover:text-primary hover:bg-primary/10 transition-all">
-                  <Twitter size={22} />
+                  <FileText size={22} />
                 </a>
               </div>
             </motion.div>
