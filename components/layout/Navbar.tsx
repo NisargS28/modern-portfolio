@@ -43,8 +43,7 @@ export default function Navbar() {
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     setActiveSection(href);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    window.dispatchEvent(new CustomEvent('portfolio:scroll-to', { detail: href }));
   };
 
   return (
@@ -90,7 +89,10 @@ export default function Navbar() {
         {/* ── CENTER: Logo ── */}
         <Link
           href="#hero"
-          onClick={() => handleNavClick('#hero')}
+          onClick={(event) => {
+            event.preventDefault();
+            handleNavClick('#hero');
+          }}
           className="flex items-center gap-2 group justify-self-center"
         >
           <div className="w-9 h-9 rounded-full bg-textMain flex items-center justify-center text-background font-grotesk font-bold text-xs group-hover:rotate-12 transition-transform duration-300">
