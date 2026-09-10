@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { InteractiveSystem } from '../ui/MotionExperience';
 import { ArrowDownRight, ArrowUpRight, FileText, Github, Linkedin, Sparkles } from 'lucide-react';
 
 export default function HeroSection() {
@@ -32,7 +33,7 @@ export default function HeroSection() {
             <span className="rounded-full bg-primary px-3 py-1 font-grotesk text-xs font-bold text-white">AI × Web</span>
           </div>
           <div className="space-y-5">
-            <div><p className="text-sm text-muted">Latest role</p><p className="mt-1 font-grotesk text-xl font-bold">AI Solutions Intern</p><p className="text-sm text-primary">SKAPS Industries</p></div>
+            <InteractiveSystem />
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-2xl bg-primary p-4 text-white"><p className="text-3xl font-grotesk font-bold">90%</p><p className="mt-1 text-xs text-white/75">less invoice data entry</p></div>
               <div className="rounded-2xl bg-[#dfff55] p-4 text-[#111318]"><p className="text-3xl font-grotesk font-bold">150</p><p className="mt-1 text-xs text-black/65">containers tracked / day</p></div>

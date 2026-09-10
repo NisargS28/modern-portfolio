@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { ArrowUpRight, Github, LockKeyhole, MessageSquareText, ReceiptText, ShoppingBag } from 'lucide-react';
 
 const projects = [
@@ -39,6 +40,8 @@ const projects = [
 ];
 
 export default function ProjectsSection() {
+  const [filter, setFilter] = useState('All');
+  const filtered = projects.filter(project => filter === 'All' || (filter === 'AI' ? project.tags.includes('AI chatbot') : filter === 'Commerce' ? project.title === 'Prasang' : ['Ledgerly', 'Restaurant POS'].includes(project.title)));
   return (
     <section id="projects" className="section-padding relative z-10">
       <div className="mx-auto max-w-7xl px-6">
@@ -46,11 +49,12 @@ export default function ProjectsSection() {
           <div><span className="section-kicker">02 / Selected work</span><h2 className="font-grotesk text-4xl font-bold tracking-tight md:text-6xl">Case studies, not just cards.</h2></div>
           <p className="max-w-md text-muted">Four projects that show how I think across product, backend, data and real users.</p>
         </div>
-        <div className="grid gap-5 md:grid-cols-2">
-          {projects.map((project, index) => {
+        <div className="project-filters" aria-label="Filter projects">{['All', 'AI', 'Commerce', 'Business tools'].map(item => <button type="button" key={item} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}</button>)}</div>
+        <div className="grid gap-5 md:grid-cols-2" aria-live="polite">
+          {filtered.map((project, index) => {
             const Icon = project.icon;
             return (
-              <motion.article key={project.title} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ delay: index * .08 }} className="editorial-card group overflow-hidden rounded-[2rem]">
+              <motion.article layout key={project.title} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ delay: index * .08 }} className="editorial-card project-interactive group overflow-hidden rounded-[2rem]">
                 <div className={`relative min-h-56 p-7 ${project.tone}`}>
                   <div className="flex items-start justify-between"><span className="font-grotesk text-sm font-bold opacity-70">PROJECT / {project.number}</span><Icon size={36} strokeWidth={1.5} /></div>
                   <div className="absolute bottom-7 left-7 right-7"><p className="mb-2 text-sm font-semibold opacity-70">{project.label}</p><h3 className="font-grotesk text-4xl font-bold tracking-tight md:text-5xl">{project.title}</h3></div>

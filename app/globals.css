@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --bg: #f4f2eb;
+  --bg: #f4f7ff;
   --primary: #2855ff;
   --secondary: #695cff;
   --accent: #ff6b35;
@@ -16,7 +16,7 @@
 }
 
 .dark {
-  --bg: #0a0b0f;
+  --bg: #080d20;
   --text: #f7f5ef;
   --muted: #a7a8ae;
 }
@@ -138,6 +138,40 @@ body {
   text-transform: uppercase;
   color: var(--primary);
 }
+
+.reading-progress { position: fixed; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg,#2855ff,#a855f7,#00d8d0); z-index: 100; transform-origin: left; }
+.ambient-field { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: -1; }
+.ambient-field span { position: absolute; width: 42vw; height: 42vw; border-radius: 50%; filter: blur(100px); opacity: .13; background: #2855ff; animation: ambient-drift 18s ease-in-out infinite alternate; }
+.ambient-field span:nth-child(2) { right: -15%; top: 35%; background: #a855f7; animation-delay: -8s; }
+.ambient-field span:nth-child(3) { left: 25%; bottom: -30%; background: #00d8d0; animation-delay: -4s; }
+@keyframes ambient-drift { from { transform: translate(-12%,-8%) scale(.9); } to { transform: translate(20%,18%) scale(1.15); } }
+#hero h1 > span { background: linear-gradient(110deg,#2855ff 10%,#9354f5 45%,#00a9c9 65%,#2855ff 90%); background-size: 220% auto; background-clip: text; -webkit-background-clip: text; color: transparent; animation: text-flow 9s linear infinite; }
+@keyframes text-flow { to { background-position: 220% center; } }
+.system-panel { transform: perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)); transition: transform .18s ease-out; }
+.system-tabs,.project-filters { display: flex; gap: .4rem; flex-wrap: wrap; }
+.system-tabs button,.project-filters button { border: 1px solid color-mix(in srgb,var(--text) 16%,transparent); padding: .65rem .9rem; border-radius: 999px; font-size: .875rem; font-weight: 600; transition: background .2s,color .2s,transform .2s; }
+.system-tabs button[aria-pressed=true],.project-filters button[aria-pressed=true] { color: white; background: #2855ff; border-color: #2855ff; box-shadow: 0 5px 20px #2855ff30; }
+.system-tabs button:hover,.project-filters button:hover { transform: translateY(-2px); }
+.project-filters { margin-bottom: 2rem; }
+.system-title { font-family: 'Space Grotesk',sans-serif; font-weight: 700; font-size: 1.35rem; margin: 1.4rem 0; }
+.system-steps { display: grid; gap: .75rem; }
+.system-steps li { position: relative; display: flex; align-items: center; gap: .7rem; min-height: 3.2rem; border: 1px solid #2855ff28; border-radius: .8rem; padding: .65rem; background: #2855ff06; font-size: .875rem; }
+.system-steps li:not(:last-child)::after { content: ''; position: absolute; width: 1px; height: .75rem; background: #2855ff80; top: 100%; left: 1.6rem; }
+.step-number { color: var(--primary); font: 700 .75rem 'Space Grotesk',sans-serif; }
+.step-pulse { margin-left: auto; flex-shrink: 0; width: 5px; height: 5px; background: #2855ff; border-radius: 50%; animation: signal-pulse 2.8s infinite; }
+@keyframes signal-pulse { 0%,80%,100% { opacity: .2; box-shadow: 0 0 0 0 #2855ff00; } 30% { opacity: 1; box-shadow: 0 0 0 5px #2855ff20; } }
+.system-note { margin: 1rem 0 .5rem; min-height: 2.5rem; color: var(--muted); font-size: .8rem; line-height: 1.5; }
+.project-interactive { transition: box-shadow .35s,border-color .35s; }
+.project-interactive > div:first-child { overflow: hidden; }
+.project-interactive > div:first-child::before { content: ''; position: absolute; width: 100%; height: 220%; background: linear-gradient(90deg,transparent,#ffffff25,transparent); transform: translateX(-140%) rotate(25deg); inset: -60% auto auto 0; transition: transform .8s; pointer-events: none; }
+.project-interactive:hover > div:first-child::before { transform: translateX(140%) rotate(25deg); }
+.project-interactive:hover { border-color: #2855ff80; box-shadow: 0 20px 70px #2855ff20; }
+.project-interactive h3,.project-interactive svg { transition: transform .4s; }
+.project-interactive:hover h3 { transform: translateX(8px); }
+.project-interactive:hover > div:first-child svg { transform: rotate(-12deg) scale(1.15); }
+a:focus-visible,button:focus-visible { outline: 3px solid var(--primary); outline-offset: 5px; }
+section[id] { scroll-margin-top: 100px; }
+@media (prefers-reduced-motion: reduce) { .system-panel { transform: none; } *,*::before,*::after { transition-duration: .01ms !important; } }
 
 .section-kicker::before {
   content: '';
